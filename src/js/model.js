@@ -1,27 +1,14 @@
 import { async } from 'regenerator-runtime';
+import { API_URL, GET_CONFIG } from './config';
+import { getJSON } from './views/helper';
 
 export const state = {
   recipe: {},
 };
 
-const initGET = Object.freeze({
-  method: 'GET',
-  withCredentials: true,
-  headers: {
-    'X-Auth-Token': '5041de20-ab64-48dc-83d3-ba5eafd4bcc3',
-  },
-});
-
 export const loadRecipe = async function (id) {
   try {
-    const res = await fetch(
-      `https://forkify-api.herokuapp.com/api/v2/recipes/${id}`,
-      initGET
-    );
-    const data = await res.json();
-
-    if (!res.ok) throw new Error(`${data.message} (${res.status})`);
-
+    const data = getJSON(`${API_URL}/${id}`, GET_CONFIG);
     const recipe = structuredClone(data.data.recipe);
     state.recipe = {
       id: recipe.id,

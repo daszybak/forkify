@@ -1,5 +1,5 @@
 import * as model from './model.js';
-import recipeView from './views/recipeView.js';
+import { RecipeView } from './views/recipeView.js';
 
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
@@ -25,13 +25,13 @@ const showRecipe = async function () {
     const id = window.location.hash.slice(1);
     if (!id) return;
 
-    recipeView.renderSpinner();
+    RecipeView.renderSpinner();
 
     // 1) Loading recipe
     await model.loadRecipe(id);
 
     // 2) Rendering recipe
-    recipeView.render(model.state.recipe);
+    RecipeView.render(model.state.recipe);
   } catch (err) {
     alert(err);
   }
