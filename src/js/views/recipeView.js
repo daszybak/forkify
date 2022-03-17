@@ -44,18 +44,18 @@ export class RecipeView {
             <svg class="recipe__info-icon">
               <use href="${icons}#icon-clock"></use>
             </svg>
-            <span class="recipe__info-data recipe__info-data--minutes">${fracty(
+            <span class="recipe__info-data recipe__info-data--minutes">${
               this.#data.cookingTime
-            )}</span>
+            }</span>
             <span class="recipe__info-text">minutes</span>
           </div>
           <div class="recipe__info">
             <svg class="recipe__info-icon">
               <use href="${icons}#icon-users"></use>
             </svg>
-            <span class="recipe__info-data recipe__info-data--people">${fracty(
+            <span class="recipe__info-data recipe__info-data--people">${
               this.#data.servings
-            )}</span>
+            }</span>
             <span class="recipe__info-text">servings</span>
 
             <div class="recipe__info-buttons">
@@ -88,20 +88,7 @@ export class RecipeView {
           <h2 class="heading--2">Recipe ingredients</h2>
           <ul class="recipe__ingredient-list">
             ${this.#data.ingredients
-              .map(ingredient => {
-                return `
-              <li class="recipe__ingredient">
-              <svg class="recipe__icon">
-                <use href="${icons}#icon-check"></use>
-              </svg>
-              <div class="recipe__quantity">${fracty(ingredient.quantity)}</div>
-              <div class="recipe__description">
-                <span class="recipe__unit">${fracty(ingredient.unit)}</span>
-                ${ingredient.description}
-              </div>
-            </li>
-            `;
-              })
+              .map(ing => this.#generateMarkupIngredient(ing))
               .join('')}
             
           </ul>
@@ -131,6 +118,23 @@ export class RecipeView {
       </div>
     </div>
     `;
+  }
+
+  #generateMarkupIngredient(ingredient) {
+    return `
+    <li class="recipe__ingredient">
+    <svg class="recipe__icon">
+      <use href="${icons}#icon-check"></use>
+    </svg>
+    <div class="recipe__quantity">${
+      ingredient.quantity ? fracty(ingredient.quantity) : ''
+    }</div>
+    <div class="recipe__description">
+      <span class="recipe__unit">${ingredient.unit}</span>
+      ${ingredient.description}
+    </div>
+  </li>
+  `;
   }
 }
 

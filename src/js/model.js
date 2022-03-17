@@ -36,6 +36,6 @@ export const loadRecipe = async function (id) {
 
     console.log(state.recipe);
   } catch (err) {
-    console.log(err);
+    alert(err);
   }
 };
