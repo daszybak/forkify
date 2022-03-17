@@ -16,7 +16,7 @@ export class RecipeView {
     this.#parentElement.innerHTML = '';
   }
 
-  async renderSpinner(parentEl) {
+  renderSpinner() {
     const markup = `
     <div class="spinner">
       <svg>
