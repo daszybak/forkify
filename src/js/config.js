@@ -6,3 +6,4 @@ export const GET_CONFIG = Object.freeze({
     'X-Auth-Token': '5041de20-ab64-48dc-83d3-ba5eafd4bcc3',
   },
 });
+export const TIMEOUT_SEC = 10;

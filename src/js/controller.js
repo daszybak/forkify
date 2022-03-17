@@ -18,7 +18,6 @@ const showRecipe = async function () {
     if (!id) return;
 
     recipeView.renderSpinner();
-
     // 1) Loading recipe
     await model.loadRecipe(id);
 
