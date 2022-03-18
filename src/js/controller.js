@@ -12,7 +12,7 @@ const message = document.querySelector('.message');
 
 ///////////////////////////////////////
 
-const showRecipe = async function () {
+const controlRecipe = async function () {
   try {
     const id = window.location.hash.slice(1);
     if (!id) return;
@@ -28,4 +28,7 @@ const showRecipe = async function () {
   }
 };
 
-['hashchange', 'load'].forEach(e => window.addEventListener(e, showRecipe));
+const init = function () {
+  recipeView.addHandlerRender(controlRecipe);
+};
+init();
