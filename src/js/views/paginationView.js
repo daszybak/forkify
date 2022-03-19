@@ -31,7 +31,6 @@ class PaginationView extends View {
     }
 
     if (curPage < numPages && curPage > 1) {
-      console.log(curPage);
       return `
             ${this._generateMarkupPrevBtn(curPage)}
             ${this._generateMarkupNextBtn(curPage)}
